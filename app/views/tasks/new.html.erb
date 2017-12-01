@@ -1,0 +1,13 @@
+
+<h1>New Taskeriño</h1>
+<%= form_for(@task) do |f| %>
+  <p>
+    <%= f.label :name, "This the new task!" %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :due, "Due at..." %><br>
+    <%= f.text_field :due %>
+  </p>
+  <%= f.submit %>
+<% end %>
