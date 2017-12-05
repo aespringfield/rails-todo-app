@@ -12,7 +12,8 @@ class TasksController < ApplicationController
       flash[:notice] = "Wooo! New Task!!!!"
       redirect_to @task
     else
-      # nothing, yet
+      flash.now[:alert] = "Task creation failed"
+      render "new"
     end
   end
 
