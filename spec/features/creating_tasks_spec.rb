@@ -10,6 +10,6 @@ RSpec.feature "Users can create new tasks" do
         fill_in "Due at...", with: "2017-12-01 17:00:00"
         click_button "Create Task"
 
-        expect(page).to have_content "Task has been created."
+        expect(page).to have_content "Wooo! New Task!!!!"
     end
 end
