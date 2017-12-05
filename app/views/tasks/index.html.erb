@@ -1,1 +1,10 @@
+<h1>Tasks</h1>
+
 <%= link_to "New Taskeriño", new_task_path %>
+
+<div id="tasks">
+    <% @tasks.each do |task| %>
+        <h2><%= link_to task.name, task %></h2>
+        <p>Due: <%= task.due %></p>
+    <% end %>
+</div>
