@@ -13,13 +13,28 @@ class TasksController < ApplicationController
       flash[:notice] = "Wooo! New Task!!!!"
       redirect_to @task
     else
-      flash.now[:alert] = "Task creation failed"
+      flash.now[:alert] = "Task creation failed :("
       render "new"
     end
   end
 
   def show
     @task = Task.find(params[:id])
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      flash[:notice] = "Yeahhhh look at that fresh and squeaky updated task!"
+      redirect_to @task
+    else
+      flash.now[:alert] = "Task editing failed :("
+      render "edit"
+    end 
   end
 
   private
