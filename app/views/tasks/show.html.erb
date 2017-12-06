@@ -1,5 +1,10 @@
 <% title(@task.name) %>
 <h2><%= @task.name %> </h2>
 <p><%= @task.due || "No Due Date" %></p> 
- <%= link_to "Edit Task", edit_task_path(@task) %>
+<%= link_to "Edit Task", edit_task_path(@task) %>
+<%= link_to "Kill This Fool", 
+  task_path(@task), 
+  method: :delete, 
+  data: {confirm: "Wow, that's a little aggressive. Are you sure?"}
+%>
 <%= link_to "Back to Tasks", tasks_path %>
