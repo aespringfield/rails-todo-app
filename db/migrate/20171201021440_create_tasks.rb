@@ -5,7 +5,6 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.boolean :complete
       t.date :created
       t.datetime :due
-
       t.timestamps
     end
   end
