@@ -2,9 +2,15 @@
 
 <%= link_to "New Taskeriño", new_task_path %>
 
-<div id="tasks">
+<div id="tasks" class="incomplete-task-list">
     <% @tasks.each do |task| %>
-        <h2><%= link_to task.name, task %></h2>
-        <p>Due: <%= task.due || "No Due Date"%></p>
+        <% if !task.complete?%>
+            <div id="<%="task-#{task.id}"%>">
+                <h2><%= link_to task.name, task %></h2>
+                <p>Due: <%= task.due || "No Due Date"%></p>
+                
+                <%= link_to "Mark as complete", complete_task_path(task.id), method: :put %>
+            </div>
+        <% end %>
     <% end %>
 </div>
