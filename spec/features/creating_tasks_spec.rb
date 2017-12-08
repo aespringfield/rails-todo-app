@@ -9,7 +9,7 @@ RSpec.feature "Users can create new tasks" do
     scenario "with valid attributes" do
         task_name = "Clean the bathroom"
         fill_in "This the new task!", with: task_name
-        fill_in "Due at...", with: "2017-12-01 17:00:00"
+        fill_in "Due at...", with: "2017-12-01"
         click_button "Create Task"
 
         expect(page).to have_content "Wooo! New Task!!!!"
@@ -26,5 +26,18 @@ RSpec.feature "Users can create new tasks" do
 
         expect(page).to have_content "Task creation failed"
         expect(page).to have_content "Name can't be blank"
+    end
+
+    scenario "with an attachment" do
+        fill_in "This the new task!", with: "Write thank-you to grandma"
+        fill_in "Due at...", with: "2017-12-27"
+        attach_file "File", "spec/fixtures/thank-you-template.txt"
+        click_button "Create Task"
+
+        expect(page).to have_content "Wooo! New Task!!!!"
+        
+        within("#task.attachment") do
+            expect(page).to have_content "thank-you-template.txt"
+        end
     end
 end
