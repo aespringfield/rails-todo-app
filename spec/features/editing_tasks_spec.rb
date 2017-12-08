@@ -15,4 +15,16 @@ RSpec.feature "Users can edit existing tasks" do
         expect(page).to have_content "Yeahhhh look at that fresh and squeaky updated task!"
         expect(page).to have_content new_task_name
     end
+
+    scenario "to set as complete" do
+        task_name = "Make breakfast"
+        task = FactoryBot.create(:task, name: task_name)
+
+        visit "/"
+        within("#task-#{task.id}") do
+            click_button "Mark as complete"
+        end
+
+        expect(task.completed).to be(true)
+    end
 end

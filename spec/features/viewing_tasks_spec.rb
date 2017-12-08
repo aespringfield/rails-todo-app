@@ -8,4 +8,7 @@ RSpec.feature "Users can view tasks" do
         click_link "Empty dishwasher"
         expect(page.current_url).to eq task_url(task)
     end
+
+    scenario "when they are not complete" do
+    end
 end
