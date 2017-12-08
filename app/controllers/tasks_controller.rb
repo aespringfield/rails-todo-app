@@ -44,9 +44,9 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def complete
+  def toggle_complete
     @task = Task.find(params[:id])
-    @task.update_attributes(complete: true)
+    @task.update_attributes(complete: !@task.complete)
     redirect_to tasks_path
   end
 

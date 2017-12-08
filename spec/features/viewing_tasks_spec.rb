@@ -22,4 +22,18 @@ RSpec.feature "Users can view tasks" do
             expect(page).to_not have_content task_name
         end
     end
+
+    scenario "in the complete category when they are complete" do
+        task_name = "Make breakfast"
+        task = FactoryBot.create(:task, name: task_name)
+
+        visit "/"
+        within("#task-#{task.id}") do
+            click_link "Mark as complete"
+        end
+
+        within (".complete-task-list") do
+            expect(page).to have_content task_name
+        end
+    end
 end
