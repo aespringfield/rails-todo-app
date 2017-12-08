@@ -36,7 +36,7 @@ RSpec.feature "Users can create new tasks" do
 
         expect(page).to have_content "Wooo! New Task!!!!"
         
-        within("#task.attachment") do
+        within(".attachment") do
             expect(page).to have_content "thank-you-template.txt"
         end
     end

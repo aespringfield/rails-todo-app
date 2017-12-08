@@ -1,7 +1,7 @@
 <% title(@task.name) %>
 <h2><%= @task.name %> </h2>
 <p><%= @task.due || "No Due Date" %></p> 
-<%= simple_format(@task.description) %>
+<%= simple_format(@task.name) %>
   <% if @task.attachment.present? %>
     <h4>Attachment</h4>
     <div class="attachment">
